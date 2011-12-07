@@ -1,0 +1,58 @@
+<h1 style="text-decoration: underline;">Setup mail2web</h1>
+<br>
+<form method="post" action="setup.cgi" name="setup">
+  <table style="text-align: left; width: 50%; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top;">Host POP Server: </td>
+        <td style="vertical-align: top;"><input name="pophost" value="$POPHOST"></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">Port POP Server: </td>
+        <td style="vertical-align: top;"><input name="popport" value="$POPPORT" ></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">SSL:<br>
+        </td>
+        <td style="vertical-align: top;"><input $SSLFALSE name="ssl" value="False" type="radio">No <input $SSLTRUE name="ssl" value="True" type="radio">Yes<br>
+        </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"> Username:<br>
+        </td>
+        <td style="vertical-align: top;"><input name="popusername" value="$POPUSER"><br>
+        </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">Userpass:</td>
+        <td style="vertical-align: top;"><input name="popuserpass" type="password" value="$POPPASS"></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">Delete last message<br>
+        </td>
+        <td style="vertical-align: top;"><input $DELMSGFALSE name="delmsg" value="False" type="radio">No <input $DELMSGTRUE name="delmsg" value="True" type="radio">Yes<br>
+        </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;">Mail from:<br>
+        </td>
+        <td style="vertical-align: top;"><input name="popsentfrom" value="$POPSENTFROM"><br>
+        </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: top;"><input name="submit" value="OK" type="submit"><input name="reset" value="Cancel" type="reset"><br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+</form>
