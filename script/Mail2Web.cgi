@@ -191,7 +191,7 @@ class Indexer:
 #   Mainfunktion    
 #-----------------------------------------------------------------------------
 def main(argv):
-    # no PIL installed on hostpoint.ch, we can use imagemagick convert
+    # no PIL installed on my hoster, but I can use imagemagick convert
     # for genrerating thumbnails
     imagemagick='/usr/local/bin/convert'
     os.chdir(os.path.dirname(argv[-1]))    

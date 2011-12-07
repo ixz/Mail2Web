@@ -1,0 +1,51 @@
+Mail2Web - v0.1.0.0
+*******************
+
+Mail2Web is a server side script, to create a web gallery
+from images, that where sent by mail.
+It connects to a POP mail account, checks if there are mails
+from a specific sender and downloads attached images, if there
+are any. A index file (HTML) is generated displaying a simple
+web gallery of the downloaded images.
+
+Tested on Apache/2.2.17 (FreeBSD), mod_hcgi/0.9.3 
+
+Requirements:
+HTTP Server with Python support and ImageMagick
+
+Check in scripts if the shebang matchs your server location of python.
+Also check if the imagemagick path in main function in Mail2Web.cgi
+matches your ImageMagick installation.  
+
+Installation:
+- Create a folder where you want to install Mail2Web
+- Copy all files of package to your folder
+- Set permissions:
+	* Set chmod of subfolders to 755
+	* Set chmod of all scripts to 700
+	* Set chmod of all templates to 600
+	
+Setup Mail2Web:
+Start the setup script. To do so, go to
+http://www.yourdomain.com/mail2web/script/Setup.cgi
+Enter your data and press Ok.
+Attention: At the moment everyone has access to your setup script, so 
+change permission on Setup.cgi to 600 when you're done or delete it.
+You should check permission on mail2web.conf in the script folder. 
+Set it to 600 if it is not yet.
+
+Wait for mails.
+You can see the index page on    
+http://www.yourdomain.com/mail2web
+
+
+TODO:
+- Better security and permission:
+	* Login before Setup
+	* Use better encryption for password in config file.
+- Unknown issues ;-) 
+ 
+
+
+
+ 
