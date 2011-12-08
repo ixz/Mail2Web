@@ -27,7 +27,7 @@ Installation:
 	
 Setup Mail2Web:
 Start the setup script. To do so, go to
-http://www.yourdomain.com/mail2web/script/Setup.cgi
+http://www.yourdomain.com/mail2web/script/setup.cgi
 Enter your data and press Ok.
 Attention: At the moment everyone has access to your setup script, so 
 change permission on Setup.cgi to 600 when you're done or delete it.
