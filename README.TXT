@@ -34,8 +34,27 @@ change permission on Setup.cgi to 600 when you're done or delete it.
 You should check permission on mail2web.conf in the script folder. 
 Set it to 600 if it is not yet.
 
-Wait for mails.
-You can see the index page on    
+Create cronjob for running the Mail2Web.cgi script.
+
+*     *     *   *    *        command to be executed
+-     -     -   -    -
+|     |     |   |    |
+|     |     |   |    +----- day of week (0 - 6) (Sunday=0)
+|     |     |   +------- month (1 - 12)
+|     |     +--------- day of        month (1 - 31)
+|     +----------- hour (0 - 23)
++------------- min (0 - 59) 
+
+e.g. every 5 minutes:
+*/5	*	*	*	*	/home/<...>/mail2web/script/Mail2Web.cgi
+
+Every day at 00:00:
+0	0	*	*	*	/home/<...>/mail2web/script/Mail2Web.cgi
+
+Hourly at xx:20:
+20	*	*	*	*	/home/<...>/mail2web/script/Mail2Web.cgi
+
+Wait for mails from sender and the script run, then check the index page on    
 http://www.yourdomain.com/mail2web
 
 
