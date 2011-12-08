@@ -215,7 +215,9 @@ def main(argv):
 
     picpath=os.path.join(webpath,'pics')
 
+	# change if you have to
     tt_string="%a, %d %b %Y %H:%M:%S"
+    tt=time.localtime()
 
     # connect to POP account
     pop=CPOP()
