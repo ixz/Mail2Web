@@ -1,4 +1,4 @@
-Mail2Web - v0.1.0.0
+Mail2Web - v0.1.0.1
 *******************
 
 Mail2Web is a server side script, to create a web gallery
@@ -57,6 +57,8 @@ Hourly at xx:20:
 Wait for mails from sender and the script run, then check the index page on    
 http://www.yourdomain.com/mail2web
 
+Fixed:
+- Added more error info in exception catches (print)
 
 TODO:
 - Better security and permission:

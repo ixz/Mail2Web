@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 #-----------------------------------------------------------------------------
-#   Copyright 2011 ixz
+#   Copyright 2011-2012 ixz
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ class CPOP:
             self.__pop_server.pass_(userpass).decode()
             return True
         except Exception as val:
-            print(str(val))
+            print("error in connect:",str(val))
             return False
     # terminate session
     def quit(self):
@@ -64,13 +64,13 @@ class CPOP:
             self.__pop_server.quit().decode()
             self.__pop_server=None
         except Exception as val:
-            print(str(val))
+            print("error in quit:",str(val))
     # count messages
     def countMsgs(self):
         try:
             return len(self.__pop_server.list()[1])
         except Exception as val:
-            print(str(val))
+            print("error ind countMsgs:",str(val))
             return -1
     # get the header of the mail, default: 30 lines 
     def retrieveHeader(self, id, lines=30):
@@ -81,7 +81,7 @@ class CPOP:
                 header+=msg[1][i]+'\n'
             return email.message_from_string(header)
         except Exception as val:
-            print(str(val))
+            print("error in retrieveHeader:",str(val))
             return ''
     # retrieve a message, marks the message as read
     def retrieveMsg(self, id):
@@ -92,14 +92,14 @@ class CPOP:
                 text+=t+'\n'
             return email.message_from_string(text)
         except Exception as val:
-            print(str(val))
+            print("error in retrieveMsg:",str(val))
             return None
     # delete a message
     def deleteMsg(self,id):
         try:
             self.__pop_server.dele(id).decode()
         except Exception as val:
-            print(str(val))
+            print("error in quit:",str(val))
 
 
 #-----------------------------------------------------------------------------
@@ -272,7 +272,7 @@ def main(argv):
                                 if delmsg:
                                     pop.deleteMsg(id)                  
     except Exception as val:
-        print(str(val))
+        print("error in main:",str(val))
     finally:
         pop.quit()
 
