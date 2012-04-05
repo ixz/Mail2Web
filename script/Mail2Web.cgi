@@ -51,55 +51,71 @@ class CPOP:
                 self.__pop_server=poplib.POP3(host,port)
             else:
                 self.__pop_server=poplib.POP3_SSL(host,port)
-            self.__pop_server.getwelcome().decode()
-            self.__pop_server.user(username).decode()
-            self.__pop_server.pass_(userpass).decode()
-            return True
+            # return false if not connected
+            if not self.__pop_server:
+                return False
+            else:
+                self.__pop_server.getwelcome().decode()
+                self.__pop_server.user(username).decode()
+                self.__pop_server.pass_(userpass).decode()
+                return True
         except Exception as val:
-            print("error in connect:",str(val))
+            #print("error in connect:",str(val))
             return False
     # terminate session
     def quit(self):
         try:
-            self.__pop_server.quit().decode()
-            self.__pop_server=None
+            if self.__pop_server:
+                self.__pop_server.quit().decode()
+                self.__pop_server=None
         except Exception as val:
-            print("error in quit:",str(val))
+            #print("error in quit:",str(val))
+            pass
     # count messages
     def countMsgs(self):
         try:
-            return len(self.__pop_server.list()[1])
+            if self.__pop_server:
+                return len(self.__pop_server.list()[1])
+            else:
+                return -1
         except Exception as val:
-            print("error ind countMsgs:",str(val))
+            print("error in countMsgs:",str(val))
             return -1
     # get the header of the mail, default: 30 lines 
     def retrieveHeader(self, id, lines=30):
         try:
-            msg=self.__pop_server.top(id,lines)
-            header=str()
-            for i in range(0,lines):
-                header+=msg[1][i]+'\n'
-            return email.message_from_string(header)
+            if self.__pop_server:
+                msg=self.__pop_server.top(id,lines)
+                header=str()
+                for i in range(0,lines):
+                    header+=msg[1][i]+'\n'
+                return email.message_from_string(header)
+    	    else:
+                return ''
         except Exception as val:
             print("error in retrieveHeader:",str(val))
             return ''
     # retrieve a message, marks the message as read
     def retrieveMsg(self, id):
         try:
-            msg=self.__pop_server.retr(id)
-            text=str()
-            for t in msg[1]:
-                text+=t+'\n'
-            return email.message_from_string(text)
+            if self.__pop_server:
+                msg=self.__pop_server.retr(id)
+                text=str()
+                for t in msg[1]:
+                    text+=t+'\n'
+                return email.message_from_string(text)
+            else:
+                return None
         except Exception as val:
             print("error in retrieveMsg:",str(val))
             return None
     # delete a message
     def deleteMsg(self,id):
         try:
-            self.__pop_server.dele(id).decode()
+            if self.__pop_server:
+                self.__pop_server.dele(id).decode()
         except Exception as val:
-            print("error in quit:",str(val))
+            print("error in deleteMsg:",str(val))
 
 
 #-----------------------------------------------------------------------------
